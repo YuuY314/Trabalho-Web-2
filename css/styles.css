@@ -50,6 +50,61 @@ header nav ul li a {
 main {
     min-height: 80vh;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 25%;
+    padding: 2rem;
+    outline: 5px solid white;
+    border-radius: 10px;
+}
+
+form h1 {
+    text-align: center;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+}
+
+input, select {
+    outline: none;
+    border: none;
+    padding: .5em;
+}
+
+#form-btn {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btn {
+    width: 40%;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: large;
+    font-weight: bold;
+    transition: .5s;
+}
+
+.btn:hover {
+    background-color: grey;
 }
 
 footer {
@@ -57,4 +112,16 @@ footer {
     min-height: 10vh;
     padding: 15px;
     display: block;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#github-link {
+    transition: .5s
+}
+
+#github-link:hover {
+    color: lightcyan
 }
