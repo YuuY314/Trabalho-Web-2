@@ -82,6 +82,10 @@ form div {
     flex-direction: column;
 }
 
+form > label {
+    text-align: center;
+}
+
 input, select {
     outline: none;
     border: none;
@@ -92,6 +96,25 @@ input, select {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+}
+
+#confirm-input {
+    position: relative;
+}
+
+#error {
+    position: absolute;
+    top: 57px;
+}
+
+#projects, #projects div {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+}
+
+input[type=checkbox] {
+    transform: scale(1.5);
 }
 
 .btn {

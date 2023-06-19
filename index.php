@@ -23,6 +23,7 @@
         <section>
             <form action="php/register.php" method="POST">
                 <h1>Cadastro</h1>
+                <hr>
                 <div>
                     <label for="name"><strong>Nome de usuário</strong></label>
                     <input type="text" id="name" name="name" placeholder="Digite seu nome de usuário" required>
@@ -35,10 +36,31 @@
                     <label for="password"><strong>Senha</strong></label>
                     <input type="password" id="password" name="password" placeholder="Digite sua senha">
                 </div>
-                <div>
+                <div id="confirm-input">
                     <label for="confirm-password"><strong>Confirmar</strong></label>
                     <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirme sua senha">
+                    <?php 
+                        if(isset($_POST["password"]) && isset($_POST["confirm-password"])){
+                            if($_POST["password"] != $_POST["confirm-password"]){
+                                echo "<p id='error'>O campo não corresponde com a senha</p>";
+                                exit();
+                            }
+                        }
+                    ?>
                 </div>
+                <hr>
+                <label for="projects"><strong>Inscreva-se num dos projetos para receber notícias (Opcional)</strong></label>
+                <div id="projects">
+                    <div>
+                        <input type="checkbox" id="game" name="game" value="1">
+                        <label for="game"><strong>Jogo</strong></label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="book" name="book" value="1">
+                        <label for="book"><strong>Livro</strong></label>
+                    </div>
+                </div>
+                <hr>
                 <div id="form-btn">
                     <input type="reset" id="reset-btn" class="btn" value="Cancelar">
                     <input type="submit" id="submit-btn" class="btn" value="Cadastrar">
