@@ -112,13 +112,13 @@ input, select {
     align-items: center;
 }
 
-#actions {
+.actions {
     width: 20%;
     align-items: center;
     justify-content: center;
 }
 
-#actions .btn {
+.actions .btn {
     width: 60%;
 }
 

@@ -5,7 +5,7 @@
         PDO::ATTR_ORACLE_NULLS => PDO::NULL_EMPTY_STRING
     ];
 
-    $port = "3306";
+    $port = "3307";
     $db = "story_maker_studio";
     $dbuser = "root";
     $dbpassword = "";

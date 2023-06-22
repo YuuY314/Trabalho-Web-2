@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Story Maker Studio</title>
-    <link rel="stylesheet" href="css/styles.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../css/styles.css?v=<?php echo time(); ?>">
     <link rel="shortcut icon" href="img/icon.png">
 </head>
 <body>
     <header>
-        <a href="index.php"><img src="img/icon.png" alt="Story Maker Studio" width=90 height=90></a>
+        <a href="index.php"><img src="../../img/icon.png" alt="Story Maker Studio" width=90 height=90></a>
         <nav>
             <ul>
                 <li><a href="index.php"><strong>Home</strong></a></li>

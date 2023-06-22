@@ -56,7 +56,7 @@
                 </tbody>
             </table>
             </div>
-            <form action="php/linker.php" method="POST" id="actions">
+            <form action="php/crud/user_crud.php" method="POST" class="actions">
                 <input type="submit" name="insert-user" id="insert-user" class="btn" value="Inserir">
                 <input type="submit" name="update-user" id="update-user" class="btn" value="Atualizar">
                 <input type="submit" name="select-user" id="select-user" class="btn" value="Consultar">
@@ -94,7 +94,7 @@
                 </tbody>
             </table>
             </div>
-            <form action="php/linker.php" method="POST" id="actions">
+            <form action="php/crud/project_crud.php" method="POST" class="actions">
                 <input type="submit" name="insert-project" id="insert-project" class="btn" value="Inserir">
                 <input type="submit" name="update-project" id="update-project" class="btn" value="Atualizar">
                 <input type="submit" name="select-project" id="select-project" class="btn" value="Consultar">
@@ -135,7 +135,7 @@
                 </tbody>
             </table>
             </div>
-            <form action="php/linker.php" method="POST" id="actions">
+            <form action="php/crud/user_project_crud.php" method="POST" class="actions">
                 <input type="submit" name="select-up" id="select-up" class="btn" value="Consultar">
                 <input type="submit" name="delete-up" id="delete-up" class="btn" value="Excluir">
             </form>
