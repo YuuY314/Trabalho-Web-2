@@ -13,9 +13,8 @@
         <a href="index.php"><img src="img/icon.png" alt="Story Maker Studio" width=90 height=90></a>
         <nav>
             <ul>
-                <li><a href="index.php">Projeto</a></li>
-                <li><a href="about.php">Sobre</a></li>
-                <li><a href="contact.php">Contato</a></li>
+                <li><a href="index.php"><strong>Home</strong></a></li>
+                <li><a href="list.php"><strong>Listagem</strong></a></li>
             </ul>
         </nav>
     </header>
@@ -39,14 +38,6 @@
                 <div id="confirm-input">
                     <label for="confirm-password"><strong>Confirmar</strong></label>
                     <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirme sua senha">
-                    <?php 
-                        if(isset($_POST["password"]) && isset($_POST["confirm-password"])){
-                            if($_POST["password"] != $_POST["confirm-password"]){
-                                echo "<p id='error'>O campo não corresponde com a senha</p>";
-                                exit();
-                            }
-                        }
-                    ?>
                 </div>
                 <hr>
                 <label for="projects"><strong>Inscreva-se num dos projetos para receber notícias (Opcional)</strong></label>
@@ -56,7 +47,7 @@
                         <label for="game"><strong>Jogo</strong></label>
                     </div>
                     <div>
-                        <input type="checkbox" id="book" name="book" value="1">
+                        <input type="checkbox" id="book" name="book" value="2">
                         <label for="book"><strong>Livro</strong></label>
                     </div>
                 </div>

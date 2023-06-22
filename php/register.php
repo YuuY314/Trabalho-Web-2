@@ -1,20 +1,5 @@
 <?php
-    $options = [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_CASE => PDO::CASE_NATURAL,
-        PDO::ATTR_ORACLE_NULLS => PDO::NULL_EMPTY_STRING
-    ];
-
-    $db = "usuario";
-    $dbuser = "root";
-    $dbpassword = "";
-
-    try {
-        $conn = new PDO("mysql:host=localhost;port=3307;dbname=$db", $dbuser, $dbpassword, $options);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch(PDOException $e) {
-        die($e->getMessage());
-    }
+    include_once("conn.php");
 
     class User {
         public $name;
@@ -39,18 +24,39 @@
 
     if(isset($_POST["game"])){
         $usuario->isSubscribedToGame = $_POST["game"];
-    } else {
-        $usuario->isSubscribedToGame = 0;
     }
 
     if(isset($_POST["book"])){
         $usuario->isSubscribedToBook = $_POST["book"];
-    } else {
-        $usuario->isSubscribedToBook = 0;
     }
 
-    $sqlInsert = $conn->prepare("INSERT INTO usuario(nome_usuario, email, senha, id_jogo, id_livro) VALUES(?, ?, ?, ?, ?)");
-    $sqlInsert->execute(array($usuario->name, $usuario->email, $usuario->password, $usuario->isSubscribedToGame, $usuario->isSubscribedToBook));
+    $passwordHash = password_hash($usuario->password, PASSWORD_BCRYPT);
+
+    $sqlRegisterUser = $conn->prepare("INSERT INTO usuario(nome_usuario, email, senha) VALUES(?, ?, ?)");
+    $sqlRegisterUser->execute(array($usuario->name, $usuario->email, $passwordHash));
+
+    $sqlSelect = $conn->prepare("SELECT * FROM usuario WHERE id = (SELECT MAX(id) FROM usuario)");
+    $sqlSelect->execute();
+    $fetch = $sqlSelect->fetchAll();
+    foreach($fetch as $item){
+        $id_usuario = $item["id"];
+    }
+
+    date_default_timezone_set("America/Sao_Paulo");
+
+    if(isset($usuario->isSubscribedToGame) && isset($usuario->isSubscribedToBook)){
+        $sqlRegisterSubscription = $conn->prepare("INSERT INTO usuario_projeto(data_inscricao, id_usuario, id_projeto) VALUES(?, ?, ?)");
+        $sqlRegisterSubscription->execute(array(date("Y-m-d"), $id_usuario, $usuario->isSubscribedToGame));
+
+        $sqlRegisterSubscription = $conn->prepare("INSERT INTO usuario_projeto(data_inscricao, id_usuario, id_projeto) VALUES(?, ?, ?)");
+        $sqlRegisterSubscription->execute(array(date("Y-m-d"), $id_usuario, $usuario->isSubscribedToBook));
+    } else if(isset($usuario->isSubscribedToGame) && !isset($usuario->isSubscribedToBook)){
+        $sqlRegisterSubscription = $conn->prepare("INSERT INTO usuario_projeto(data_inscricao, id_usuario, id_projeto) VALUES(?, ?, ?)");
+        $sqlRegisterSubscription->execute(array(date("Y-m-d"), $id_usuario, $usuario->isSubscribedToGame));
+    } else if(isset($usuario->isSubscribedToBook) && !isset($usuario->isSubscribedToGame)){
+        $sqlRegisterSubscription = $conn->prepare("INSERT INTO usuario_projeto(data_inscricao, id_usuario, id_projeto) VALUES(?, ?, ?)");
+        $sqlRegisterSubscription->execute(array(date("Y-m-d"), $id_usuario, $usuario->isSubscribedToBook));
+    }
     
-    header("Location: ../home.php");
+    header("Location: ../list.php");
 ?>

@@ -29,6 +29,8 @@ header {
     justify-content: space-around;
     align-items: center;
     min-height: 10vh;
+    background-color: #000;
+    margin-bottom: 50px;
     /* position: fixed;
     top: 0;
     z-index: 100; */
@@ -45,6 +47,11 @@ header nav ul li {
 header nav ul li a {
     color: #FFFFFF;
     font-size: large;
+    transition: .5s;
+}
+
+header nav ul li a:hover {
+    color: #cccccc;
 }
 
 main {
@@ -53,6 +60,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
 }
 
 section {
@@ -60,6 +69,11 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 50px;
+}
+
+section div h1 {
+    text-align: center;
 }
 
 form {
@@ -98,13 +112,14 @@ input, select {
     align-items: center;
 }
 
-#confirm-input {
-    position: relative;
+#actions {
+    width: 20%;
+    align-items: center;
+    justify-content: center;
 }
 
-#error {
-    position: absolute;
-    top: 57px;
+#actions .btn {
+    width: 60%;
 }
 
 #projects, #projects div {
@@ -147,4 +162,24 @@ footer {
 
 #github-link:hover {
     color: lightcyan
+}
+
+table {
+    border: 2px solid #cccccc;
+    border-collapse: collapse;
+    background-color: #111;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+.td-btn {
+    padding: 0;
+}
+
+th, tr, td {
+    border: 3px solid #cccccc;
+    color: white;
 }
