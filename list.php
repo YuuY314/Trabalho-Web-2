@@ -56,7 +56,20 @@
                 </tbody>
             </table>
             </div>
-            <form action="php/crud/user_crud.php" method="POST" class="actions">
+            <form action="php/linker.php" method="POST" class="actions">
+                <label for="select-user-id"><strong>Selecione o ID</strong></label>
+                <select name="select-user-id" id="select-user-id">
+                    <?php
+                        $sqlSelect = $conn->prepare("SELECT * FROM usuario");
+                        $sqlSelect->execute();
+                        $fetch = $sqlSelect->fetchAll();
+                        foreach($fetch as $item){
+                            $id_usuario = $item["id"];
+                            
+                            echo "<option value='$id_usuario'>$id_usuario</option>";
+                        }
+                    ?>
+                </select>
                 <input type="submit" name="insert-user" id="insert-user" class="btn" value="Inserir">
                 <input type="submit" name="update-user" id="update-user" class="btn" value="Atualizar">
                 <input type="submit" name="select-user" id="select-user" class="btn" value="Consultar">
@@ -94,7 +107,20 @@
                 </tbody>
             </table>
             </div>
-            <form action="php/crud/project_crud.php" method="POST" class="actions">
+            <form action="php/linker.php" method="POST" class="actions">
+                <label for="select-project-id"><strong>Selecione o ID</strong></label>
+                <select name="select-project-id" id="select-project-id">
+                    <?php
+                        $sqlSelect = $conn->prepare("SELECT * FROM projeto");
+                        $sqlSelect->execute();
+                        $fetch = $sqlSelect->fetchAll();
+                        foreach($fetch as $item){
+                            $id_projeto = $item["id"];
+                            
+                            echo "<option value='$id_projeto'>$id_projeto</option>";
+                        }
+                    ?>
+                </select>
                 <input type="submit" name="insert-project" id="insert-project" class="btn" value="Inserir">
                 <input type="submit" name="update-project" id="update-project" class="btn" value="Atualizar">
                 <input type="submit" name="select-project" id="select-project" class="btn" value="Consultar">
@@ -135,7 +161,20 @@
                 </tbody>
             </table>
             </div>
-            <form action="php/crud/user_project_crud.php" method="POST" class="actions">
+            <form action="php/linker.php" method="POST" class="actions">
+                <label for="select-up-id"><strong>Selecione o ID</strong></label>
+                <select name="select-up-id" id="select-up-id">
+                    <?php
+                        $sqlSelect = $conn->prepare("SELECT * FROM usuario_projeto");
+                        $sqlSelect->execute();
+                        $fetch = $sqlSelect->fetchAll();
+                        foreach($fetch as $item){
+                            $id_up = $item["id"];
+                            
+                            echo "<option value='$id_up'>$id_up</option>";
+                        }
+                    ?>
+                </select>
                 <input type="submit" name="select-up" id="select-up" class="btn" value="Consultar">
                 <input type="submit" name="delete-up" id="delete-up" class="btn" value="Excluir">
             </form>

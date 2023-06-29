@@ -1,3 +1,6 @@
+<?php
+    include_once("php/conn.php");
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -29,32 +32,35 @@
                 </div>
                 <div>
                     <label for="email"><strong>E-mail</strong></label>
-                    <input type="email" id="email" name="email" placeholder="Digite o seu e-mail">
+                    <input type="email" id="email" name="email" placeholder="Digite o seu e-mail" required>
                 </div>
                 <div>
                     <label for="password"><strong>Senha</strong></label>
-                    <input type="password" id="password" name="password" placeholder="Digite sua senha">
+                    <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
                 </div>
-                <!-- <div id="confirm-input">
-                    <label for="confirm-password"><strong>Confirmar</strong></label>
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirme sua senha">
-                </div> -->
                 <hr>
                 <label for="projects"><strong>Inscreva-se num dos projetos para receber notícias (Opcional)</strong></label>
-                <div id="projects">
-                    <div>
-                        <input type="checkbox" id="game" name="game" value="1">
-                        <label for="game"><strong>Jogo</strong></label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="book" name="book" value="2">
-                        <label for="book"><strong>Livro</strong></label>
-                    </div>
+                <div>
+                    <select name="projects" id="projects">
+                        <option value="" selected disabled>Selecione</option>
+                        <?php
+                            $sqlSelect = $conn->prepare("SELECT * FROM projeto");
+                            $sqlSelect->execute();
+                            $fetch = $sqlSelect->fetchAll();
+                            foreach($fetch as $item){
+                                $id_projeto = $item["id"];
+                                $nome_projeto = $item["nome"];
+                                $categoria = $item["categoria"];
+                                
+                                echo "<option value='$id_projeto'>$id_projeto - $nome_projeto ($categoria)</option>";
+                            }
+                        ?>
+                    </select>
                 </div>
                 <hr>
                 <div id="form-btn">
                     <input type="reset" id="reset-btn" class="btn" value="Cancelar">
-                    <input type="submit" id="submit-btn" class="btn" value="Cadastrar">
+                    <input type="submit" id="submit-btn" class="btn" value="Cadastrar" name="register-user">
                 </div>
             </form>
         </section>
